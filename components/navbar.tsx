@@ -26,7 +26,7 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <a href="./" className="flex items-center gap-2">
             <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#b45309]">
               <MapPin className="w-5 h-5 text-white" />
             </div>
