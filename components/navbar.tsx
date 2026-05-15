@@ -44,6 +44,9 @@ export function Navbar() {
             <a href="#coverage" className="text-[#57534e] hover:text-[#1c1917] transition-colors text-sm font-medium">
               Coverage
             </a>
+            <a href="#early-customers" className="text-[#57534e] hover:text-[#1c1917] transition-colors text-sm font-medium">
+              Early Customers
+            </a>
           </div>
 
           {/* CTA Buttons */}
@@ -51,8 +54,8 @@ export function Navbar() {
             <Button variant="ghost" className="text-[#57534e] hover:text-[#1c1917] hover:bg-[#fef3c7]/50">
               Sign In
             </Button>
-            <Button className="bg-[#b45309] hover:bg-[#92400e] text-white">
-              Start Free
+            <Button asChild className="bg-[#b45309] hover:bg-[#92400e] text-white">
+              <a href="#early-customers">Request Early Access</a>
             </Button>
           </div>
 
@@ -90,12 +93,15 @@ export function Navbar() {
               <a href="#coverage" className="text-[#57534e] hover:text-[#1c1917] transition-colors text-sm font-medium py-2">
                 Coverage
               </a>
+              <a href="#early-customers" className="text-[#57534e] hover:text-[#1c1917] transition-colors text-sm font-medium py-2">
+                Early Customers
+              </a>
               <hr className="border-[#e5dbcf]" />
               <Button variant="ghost" className="justify-start text-[#57534e] hover:text-[#1c1917]">
                 Sign In
               </Button>
-              <Button className="bg-[#b45309] hover:bg-[#92400e] text-white">
-                Start Free
+              <Button asChild className="bg-[#b45309] hover:bg-[#92400e] text-white">
+                <a href="#early-customers">Request Early Access</a>
               </Button>
             </div>
           </motion.div>

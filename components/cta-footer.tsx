@@ -43,26 +43,30 @@ export function CTAFooter() {
             </motion.div>
 
             <h2 className="font-serif text-4xl sm:text-5xl text-white mb-6 text-balance">
-              Start your first lookup free
+              Ready to move faster on your next site?
             </h2>
             <p className="text-lg text-white/80 max-w-xl mx-auto mb-10">
-              No credit card required. Get instant zoning analysis and see what you can build on any property in our coverage area.
+              Apply for one of our first customer spots and help shape the land feasibility workflow around real acquisition decisions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
+                asChild
                 size="lg"
                 className="bg-white text-[#b45309] hover:bg-[#fef3c7] px-8 py-6 h-auto rounded-xl text-base font-medium group"
               >
-                Try It Free
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <a href="#early-customers">
+                  Apply to Be an Early Customer
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
               <Button 
+                asChild
                 size="lg"
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 px-8 py-6 h-auto rounded-xl text-base font-medium bg-transparent"
               >
-                Schedule a Demo
+                <a href="#early-customers">Schedule a Demo</a>
               </Button>
             </div>
           </div>

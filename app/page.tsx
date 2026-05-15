@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { HowItWorks } from "@/components/how-it-works"
 import { Features } from "@/components/features"
 import { Coverage } from "@/components/coverage"
+import { EarlyCustomerForm } from "@/components/early-customer-form"
 import { CTAFooter } from "@/components/cta-footer"
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <HowItWorks />
       <Features />
       <Coverage />
+      <EarlyCustomerForm />
       <CTAFooter />
     </main>
   )
