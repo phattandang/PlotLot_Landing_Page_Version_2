@@ -79,7 +79,7 @@ export function EarlyCustomerForm() {
       ].join("\n"),
     )
 
-    window.location.href = `mailto:hello@plotlot.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:dangtanphat2003@gmail.com,earlperry562@gmail.com?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 
