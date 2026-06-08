@@ -17,6 +17,8 @@ type FormState = {
   contactPreference: string
 }
 
+type SubmitStatus = "idle" | "loading" | "success" | "error"
+
 const initialFormState: FormState = {
   name: "",
   email: "",
@@ -51,36 +53,31 @@ const highlights = [
 
 export function EarlyCustomerForm() {
   const [formState, setFormState] = useState<FormState>(initialFormState)
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<SubmitStatus>("idle")
 
   const updateField = (field: keyof FormState, value: string) => {
     setFormState((current) => ({ ...current, [field]: value }))
-    setSubmitted(false)
+    if (status === "error") setStatus("idle")
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setStatus("loading")
 
-    const subject = encodeURIComponent("PlotLot early customer request")
-    const body = encodeURIComponent(
-      [
-        "New early customer request",
-        "",
-        `Name: ${formState.name}`,
-        `Email: ${formState.email}`,
-        `Company: ${formState.company}`,
-        `Role: ${formState.role}`,
-        `Phone: ${formState.phone || "Not provided"}`,
-        `Timeline: ${formState.timeline}`,
-        `Preferred contact: ${formState.contactPreference}`,
-        "",
-        "What they are trying to solve:",
-        formState.goal,
-      ].join("\n"),
-    )
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      })
 
-    window.location.href = `mailto:dangtanphat2003@gmail.com,earlperry562@gmail.com?subject=${subject}&body=${body}`
-    setSubmitted(true)
+      if (!response.ok) throw new Error("Request failed")
+
+      setStatus("success")
+      setFormState(initialFormState)
+    } catch {
+      setStatus("error")
+    }
   }
 
   return (
@@ -250,15 +247,21 @@ export function EarlyCustomerForm() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button
                   type="submit"
+                  disabled={status === "loading" || status === "success"}
                   size="lg"
-                  className="h-auto rounded-xl bg-[#b45309] px-8 py-4 text-base font-medium text-white hover:bg-[#92400e]"
+                  className="h-auto rounded-xl bg-[#b45309] px-8 py-4 text-base font-medium text-white hover:bg-[#92400e] disabled:opacity-60"
                 >
-                  Apply to Be an Early Customer
-                  <ArrowRight className="h-4 w-4" />
+                  {status === "loading" ? "Sending…" : "Apply to Be an Early Customer"}
+                  {status !== "loading" && <ArrowRight className="h-4 w-4" />}
                 </Button>
-                {submitted && (
+                {status === "success" && (
                   <p className="text-sm text-[#047857]">
-                    Your email draft is ready. Send it to complete the request.
+                    Request received! We will be in touch shortly.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-sm text-red-600">
+                    Something went wrong. Please try again or email us directly.
                   </p>
                 )}
               </div>
