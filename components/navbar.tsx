@@ -2,11 +2,18 @@
 
 import { motion } from "framer-motion"
 import { MapPin, Menu, X } from "lucide-react"
-import { useState } from "react"
+import { useState, type MouseEvent } from "react"
 import { Button } from "@/components/ui/button"
+import { scrollToSection } from "@/lib/smooth-scroll"
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const handleEarlyAccessClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    setMobileMenuOpen(false)
+    scrollToSection("early-customers")
+  }
 
   return (
     <motion.nav
@@ -55,7 +62,9 @@ export function Navbar() {
               Sign In
             </Button>
             <Button asChild className="bg-[#b45309] hover:bg-[#92400e] text-white">
-              <a href="#early-customers">Request Early Access</a>
+              <a href="#early-customers" onClick={handleEarlyAccessClick}>
+                Request Early Access
+              </a>
             </Button>
           </div>
 
@@ -101,7 +110,9 @@ export function Navbar() {
                 Sign In
               </Button>
               <Button asChild className="bg-[#b45309] hover:bg-[#92400e] text-white">
-                <a href="#early-customers">Request Early Access</a>
+                <a href="#early-customers" onClick={handleEarlyAccessClick}>
+                  Request Early Access
+                </a>
               </Button>
             </div>
           </motion.div>

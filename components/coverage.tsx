@@ -18,18 +18,19 @@ const stats = [
   },
   {
     icon: Building,
-    value: "5",
+    value: "6",
     label: "States",
-    description: "FL, GA, NC, TX, SC"
+    description: "FL, GA, NC, TX, SC, CA"
   }
 ]
 
 const states = [
+  { name: "California", cities: "San Diego, Sacramento, Oakland, San Mateo, Santa Clara, San Jose, San Francisco" },
   { name: "Florida", cities: "Miami, Tampa, Orlando, Jacksonville" },
   { name: "Georgia", cities: "Atlanta, Savannah, Augusta" },
   { name: "North Carolina", cities: "Charlotte, Raleigh, Durham" },
   { name: "Texas", cities: "Austin, Dallas, Houston, San Antonio" },
-  { name: "South Carolina", cities: "Charleston, Columbia, Greenville" }
+  { name: "South Carolina", cities: "Charleston, Columbia, Greenville" },
 ]
 
 const containerVariants = {
@@ -49,7 +50,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.25, 0.4, 0.25, 1]
+      ease: [0.25, 0.4, 0.25, 1] as const
     }
   }
 }
